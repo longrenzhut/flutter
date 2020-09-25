@@ -5,11 +5,12 @@ import 'Adapt.dart';
 import 'UIHelper.dart';
 
 class ImageHelper {
+
   static String png(String name) {
-    return "assets/images/$name.png";
+    return "images/$name";
   }
 
-  static Widget icon(String name, {double width, double height, BoxFit boxFit = BoxFit.fitHeight}) {
+  static Widget asset(String name, {double width, double height, BoxFit boxFit = BoxFit.fitHeight}) {
     var w = width == double.infinity ? double.infinity: Adapt.setWidth(width);
     var h = height == double.infinity ? double.infinity: Adapt.setWidth(height);
     return Image.asset(
@@ -28,7 +29,7 @@ class ImageHelper {
     return IconButton(
         alignment: alignment,
         color: Colors.white,
-        icon: ImageHelper.icon(name,width: width,height: height),
+        icon: asset(name,width: width,height: height),
         splashColor: Colors.grey[100],
         highlightColor: Colors.grey[100],
         padding: padding,

@@ -1,6 +1,7 @@
 
 import 'dart:collection';
 
+import 'package:demo/base/model/UserModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Cache{
@@ -44,15 +45,17 @@ class Cache{
       return;
     }
     cacheMap[key]  = value;
-    Cache.cache.setString(key,value);
+    cache.setString(key,value);
   }
+
+
 
 
   String getString(String key, {String defalut = ""}){
     String newValue = cacheMap[key];
     if(null != newValue)
       return  newValue;
-    if(Cache.cache.containsKey(key)) {
+    if(cache.containsKey(key)) {
       String value = Cache.cache.getString(key);
       if (null != value) {
         cacheMap[key] = value;
@@ -82,13 +85,13 @@ class Cache{
 
   void clear(){
     cacheMap.clear();
-    Cache.cache.clear();
+    cache.clear();
   }
 
 
   void remove(String key){
     cacheMap.remove(key);
-    Cache.cache.remove(key);
+   cache.remove(key);
   }
 
 //  <T> void putEntity(String key, T entity) {

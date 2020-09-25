@@ -1,4 +1,5 @@
 
+import 'package:demo/base/utils/LoginHelper.dart';
 import 'package:fluro/fluro.dart';
 import 'package:get_it/get_it.dart';
 
@@ -22,6 +23,8 @@ class BaseApp{
     Routes.configureRoutes(router);
 
     GetIt.instance.registerSingleton(NavigateService());
+
+    LoginHelper.instance().init();
 
   }
 

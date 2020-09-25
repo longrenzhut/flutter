@@ -8,9 +8,9 @@ import 'MyColors.dart';
 class UIHelper{
 
 
-  static TextStyle textSize(int fontsize){
-    return TextStyle(fontSize: Adapt.setTextSp(fontsize));
-  }
+
+
+
 
   static EdgeInsets edgeInset({
     double left,
@@ -26,18 +26,8 @@ class UIHelper{
    => EdgeInsets.all(space);
 
 
-  static TextStyle textColor(Color color){
-    return TextStyle(color: color);
-  }
 
 
-
-  static TextStyle textStyle({int fontsize,Color color
-    ,FontWeight fontWeight,
-
-  }){
-    return TextStyle(color: color,fontSize: Adapt.setTextSp(fontsize),fontWeight: fontWeight);
-  }
 
 
   static BoxDecoration boxDecoration({

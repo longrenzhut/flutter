@@ -17,5 +17,8 @@ class MyColors{
   static final Color cl_1A1E283C = Color(0x1A1E283C);
   static final Color cl_9BA0AA = Color(0xFF9BA0AA);
   static final Color cl_DEE4EA = Color(0xFFDEE4EA);
+  static final Color black = Color(0xFF000000);
+  static final Color white = Color(0xFFffffff);
+  static final Color cl_727066 = Color(0xFF727066);
 
 }

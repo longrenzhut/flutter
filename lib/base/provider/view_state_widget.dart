@@ -1,3 +1,4 @@
+import 'package:demo/base/widget/view/TextView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +26,7 @@ class ViewStateErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: FlatButton(
-        child: Text( "加载失败",
-          style: UIHelper.textStyle(fontsize: 18,color: Colors.black),),
+        child: TextView( "加载失败",size: 18, color: Colors.black ),
         onPressed: onPressed,
       )
     );
@@ -38,7 +38,7 @@ class ViewStateEmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("页面无数据",style: UIHelper.textStyle(fontsize: 18,color: Colors.black),),
+      child: TextView("页面无数据",size: 18, color: Colors.black ),
     );
   }
 }
@@ -48,7 +48,7 @@ class ViewStateUnAuthWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("页面未授权",style: UIHelper.textStyle(fontsize: 18,color: Colors.black),),
+      child: TextView("页面未授权",size: 18, color: Colors.black ),
     );
   }
 }

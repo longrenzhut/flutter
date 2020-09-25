@@ -1,11 +1,12 @@
-import 'package:demo/app/splash_page.dart';
 import 'package:demo/base/BaseApp.dart';
 import 'package:demo/base/cache/Cache.dart';
 import 'package:demo/base/router/routes.dart';
-import 'package:demo/base/view/BasePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import 'splash_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

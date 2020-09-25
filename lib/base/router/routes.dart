@@ -1,4 +1,4 @@
-import 'package:demo/app/splash_page.dart';
+import 'file:///F:/flutterbase/flutterbase/lib/app/splash_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 

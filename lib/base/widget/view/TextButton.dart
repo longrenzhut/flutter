@@ -2,6 +2,8 @@ import 'package:demo/base/utils/Adapt.dart';
 import 'package:demo/base/utils/UIHelper.dart';
 import 'package:flutter/material.dart';
 
+import 'TextView.dart';
+
 class TextButton extends StatefulWidget {
 
   int fontSize;
@@ -38,7 +40,7 @@ class _TextButtonState extends State<TextButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Text(widget.text,style: UIHelper.textStyle(fontsize: widget.fontSize,color: widget.textcolor)),
+        child: TextView(widget.text,size: widget.fontSize, color: widget.textcolor),
         padding: widget.padding,
         margin: widget.margin,
         decoration: BoxDecoration(

@@ -163,28 +163,18 @@ class HttpProvider {
     else {
       Map<String, dynamic> resCallbackMap = response.data;
       int _code = resCallbackMap['code'];
-      if (_code == 200) {
+      if (_code == 1) {
         Map<String, dynamic> result = resCallbackMap["data"];
-        int subCode = result["subCode"];
-        if (subCode == 10000) {
-          if (null != callBack)
-            callBack.onReqSuccess(result);
-        }
-        else {
-          //逻辑业务处理提示
-          if (callBack.isToast)
-            ToastUtil.showToast(result["msg"].toString());
-          if (null != callBack && isUse)
-            callBack.onReqFailed(subCode);
-        }
+        if (null != callBack)
+          callBack.onReqSuccess(result);
       }
       else {
-        //服务器错误提示
-        if (null != callBack && isUse) {
-          if (callBack.isToast)
-            ToastUtil.showToast(resCallbackMap["msg"].toString());
-          callBack.onReqError(resCallbackMap["msg"].toString(), null);
-        }
+        String message = resCallbackMap["message"].toString();;
+        //逻辑业务处理提示
+        if (callBack.isToast)
+          ToastUtil.showToast(message);
+        if (null != callBack && isUse)
+          callBack.onReqFailed(_code);
       }
     }
 //    }catch(e,s){

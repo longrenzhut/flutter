@@ -1,5 +1,6 @@
 import 'package:demo/base/utils/Adapt.dart';
 import 'package:demo/base/utils/UIHelper.dart';
+import 'package:demo/base/widget/view/TextView.dart';
 import 'package:flutter/material.dart';
 
 class CheckBotton extends StatefulWidget {
@@ -58,9 +59,7 @@ class _TextButtonState extends State<CheckBotton> {
     return FlatButton(
 
         color: soild,
-        child: Text(widget.text,style: UIHelper.textStyle(fontsize: widget.fontSize,
-            color: widget.textcolor
-        ),),
+        child: TextView(widget.text,size: widget.fontSize, color: widget.textcolor),
         shape: RoundedRectangleBorder(
             side: BorderSide(color: stroke,
                 width: widget.strokeWidth),
