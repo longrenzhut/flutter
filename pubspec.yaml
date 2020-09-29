@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   flutter_screenutil:
 
-  dio: ^3.0.8 #latest version
+  dio:  #latest version
   fluttertoast: ^3.1.3
   fluro: ^1.6.3
   get_it: ^4.0.4

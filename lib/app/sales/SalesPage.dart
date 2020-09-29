@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 class SalesPage extends BasePage{
   @override
-  Widget getView() {
+  Widget getView(BuildContext context) {
 
     return Container(
       color: MyColors.black,

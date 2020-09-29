@@ -37,6 +37,11 @@ class UserModel {
   String get phone => _phone;
   String get token => _token;
 
+
+  set token(String value) {
+    _token = value;
+  }
+
   UserModel({
       int isAuth, 
       String authName, 

@@ -3,15 +3,13 @@ import 'package:demo/base/cache/Cache.dart';
 import 'package:demo/base/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'splash_page.dart';
+import 'app/splash_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   BaseApp.init();
-  await Cache.initSp();
   runApp(App());
 
   // Android状态栏透明 splash为白色,所以调整状态栏文字为黑色
@@ -38,7 +36,6 @@ class App extends StatelessWidget {
 
         ),
         home: SplashPage(),
-        initialRoute: Routes.splash,
       ),
     );
 

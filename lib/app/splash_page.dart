@@ -13,7 +13,7 @@ import 'main_page.dart';
 
 class SplashPage extends BasePage{
   @override
-  Widget getView() {
+  Widget getView(BuildContext context) {
     return  ProviderWidget<SplashVM>(
         model: SplashVM(),
         onModelReady: (model){
@@ -21,12 +21,7 @@ class SplashPage extends BasePage{
         },
         builder: (context,model,child){
 
-          if(model.status == 1)
-            return Container(
-              color: MyColors.cl_111928,
-            );
-          else
-            return MainPage();
+            return getContentView(model.status);
         });
   }
 

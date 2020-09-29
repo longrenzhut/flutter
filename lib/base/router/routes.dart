@@ -1,4 +1,5 @@
 import 'file:///F:/flutterbase/flutterbase/lib/app/splash_page.dart';
+import 'package:demo/app/main_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -6,10 +7,8 @@ import '../utils/JsonUtils.dart';
 
 
 class Routes {
-  static String splash = "/";
   static String home = "/home";
   static String login = "/login";
-  static String post_detail = "/bar/postdetail";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = new Handler(
@@ -19,9 +18,9 @@ class Routes {
         });
 
 
-    router.define(splash, handler: MyHandler(
+    router.define(home, handler: MyHandler(
         func: (_,map){
-          return SplashPage();
+          return MainPage();
         }
     ));
 

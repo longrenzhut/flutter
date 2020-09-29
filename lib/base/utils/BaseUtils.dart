@@ -14,5 +14,11 @@ class BaseUtils{
     return gson.decode(value);
   }
 
+  static bool isEmpty(String value){
+    if(null == value)
+      return true;
+    return value.isEmpty;
+  }
+
 
 }

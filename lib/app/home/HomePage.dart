@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 class HomePage extends BasePage{
   @override
-  Widget getView() {
+  Widget getView(BuildContext context) {
 
     return Container(
       color: MyColors.cl_111928,

@@ -50,11 +50,11 @@ class RouterHepler{
     BaseApp.router.pop(context);
   }
 
-  static void buildPostDetail(BuildContext context,String id){
-    Bundle bundle = Bundle();
-    bundle.putString("id", id);
-    _navigateTo(context,Routes.post_detail,bundle: bundle);
-  }
+//  static void buildPostDetail(BuildContext context,String id){
+//    Bundle bundle = Bundle();
+//    bundle.putString("id", id);
+//    _navigateTo(context,Routes.post_detail,bundle: bundle);
+//  }
 
   static void buildHome(BuildContext context){
     _navigateTo(context,Routes.home,replace: true);

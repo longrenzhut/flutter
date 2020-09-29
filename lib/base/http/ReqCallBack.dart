@@ -6,7 +6,6 @@ import '../provider/view_state_model.dart';
 
 class ReqCallBack {
 
-  Function(List<dynamic> list) onListSuccess;
   Function(Map<String,dynamic> map) onSuccess;
   Function onError;
   Function(int code) onFailed;
@@ -25,17 +24,14 @@ class ReqCallBack {
 
   String key = "records";
 
-  bool isList = false;
 
   ReqCallBack({
-    this.onListSuccess,
     this.onSuccess,
     this.onError,
     this.onFailed,
     this.onCompleted,
     this.isToast: true,
     this.key: "records",
-    this.isList: false,
   });
 
 
@@ -54,43 +50,24 @@ class ReqCallBack {
     if(null != onCompleted)
       onCompleted();
 
+    _viewStateModel?.setIdle();
   }
 
   void onReqFailed(int code) {
     if(null != onFailed)
       onFailed(code);
-
+    _viewStateModel?.setIdle();
   }
 
-  void onReqSuccess(Map<String, dynamic> map) {
-    var result = map["result"];
+  void onReqSuccess(Map<String, dynamic> result) {
 
-    String str;
-    if(Config.DEVELOP || Config.PRE || Config.TEST){
-      str = result.toString();
-    }
+//    String str;
+//    if(Config.DEVELOP || Config.PRE || Config.TEST){
+//      str = result.toString();
+//    }
 
-    if(result is List){
-      if(null != onListSuccess)
-        onListSuccess(result);
-    }
-    else{
-      if(isList){
-        var value = result[key];
-        if(value is List) {
-          if(null != onListSuccess)
-            onListSuccess(value);
-        }
-        else{
-          if(null != onSuccess)
-            onSuccess(value);
-        }
-      }
-      else{
-        if(null != onSuccess)
-          onSuccess(result);
-      }
-    }
+    if(null != onSuccess)
+      onSuccess(result);
     _viewStateModel?.setIdle();
   }
 

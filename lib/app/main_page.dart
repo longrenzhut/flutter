@@ -35,7 +35,7 @@ class MainPage extends BasePage{
   List<Widget> pageList = [HomePage(),UsersPage(),SalesPage(),MyPage()];
 
   @override
-  Widget getView() {
+  Widget getView(BuildContext context) {
     var widget = ProviderWidget<MainVM>(
       onModelReady: (model){
 

@@ -1,4 +1,8 @@
 
+import 'dart:convert';
+
+import 'package:demo/base/utils/BaseUtils.dart';
+import 'package:demo/base/utils/JsonUtils.dart';
 import 'package:dio/dio.dart';
 
 import '../Config.dart';
@@ -53,9 +57,10 @@ class HttpProvider {
       baseUrl: getPhpUrl(),
       connectTimeout: CONNECT_TIMEOUT,
       receiveTimeout: CONNECT_TIMEOUT,
+      sendTimeout: CONNECT_TIMEOUT,
       // 5s
       contentType: Headers.jsonContentType,
-      responseType: ResponseType.json,
+      responseType: ResponseType.plain,
     ));
 
     if (Config.TEST || Config.DEVELOP)
@@ -94,8 +99,9 @@ class HttpProvider {
     // 配置dio请求信息
     try {
       Response response;
-//    _dio.options.headers
-//        .addAll(headersMap); // 添加headers,如需设置统一的headers信息也可在此添加
+      if(!BaseUtils.isEmpty(Config.token)) {
+        _dio.options.headers.addAll({"access-token": Config.token});
+      }
       if (method == 'get') {
         response = await _dio.get(url, queryParameters: param.map);
       }
@@ -161,7 +167,8 @@ class HttpProvider {
       }
     }
     else {
-      Map<String, dynamic> resCallbackMap = response.data;
+      var result = response.data;
+      var resCallbackMap = json.decode(result);
       int _code = resCallbackMap['code'];
       if (_code == 1) {
         Map<String, dynamic> result = resCallbackMap["data"];
@@ -169,7 +176,7 @@ class HttpProvider {
           callBack.onReqSuccess(result);
       }
       else {
-        String message = resCallbackMap["message"].toString();;
+        String message = resCallbackMap["message"].toString();
         //逻辑业务处理提示
         if (callBack.isToast)
           ToastUtil.showToast(message);
@@ -177,16 +184,6 @@ class HttpProvider {
           callBack.onReqFailed(_code);
       }
     }
-//    }catch(e,s){
-//      //服务器错误提示
-//      if(null != callBack && isUse) {
-//        callBack.onError();
-//      }
-//    }finally{
-//
-//      if(null != callBack && isUse)
-//        callBack.onCompleted();
-//    }
     if (null != callBack && isUse)
       callBack.onReqCompleted();
   }

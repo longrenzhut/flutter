@@ -3,6 +3,7 @@ import 'package:demo/base/utils/LoginHelper.dart';
 import 'package:fluro/fluro.dart';
 import 'package:get_it/get_it.dart';
 
+import 'cache/Cache.dart';
 import 'http/HttpProvider.dart';
 import 'router/navigate_service.dart';
 import 'router/routes.dart';
@@ -15,16 +16,17 @@ class BaseApp{
 
   static Router get router => _router;
 
-  static void init(){
+  static void init() async{
 
-    Adapt.getInstance().init();
+    Adapt.init();
     HttpProvider.init();
     _router = Router();
     Routes.configureRoutes(router);
-
     GetIt.instance.registerSingleton(NavigateService());
+    await Cache.initSp();
 
-    LoginHelper.instance().init();
+
+    await LoginHelper.instance().init();
 
   }
 

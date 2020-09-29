@@ -1,5 +1,6 @@
 
 
+import 'package:demo/base/widget/view/TextView.dart';
 import 'package:flutter/material.dart';
 
 import 'Adapt.dart';
@@ -18,12 +19,12 @@ class UIHelper{
     double right = 0.0,
     double bottom = 0.0,
   })
-   => EdgeInsets.only(left: left,top: top,right: right,bottom: bottom);
+  => EdgeInsets.only(left: left,top: top,right: right,bottom: bottom);
 
   static EdgeInsets edgeInsetAll(
-    double space
-  )
-   => EdgeInsets.all(space);
+      double space
+      )
+  => EdgeInsets.all(space);
 
 
 
@@ -43,6 +44,54 @@ class UIHelper{
             width: Adapt.setWidth(width.toDouble())
         ),
         borderRadius: BorderRadius.circular(Adapt.setWidth(radius))
+    );
+  }
+
+  static Expanded expand({int flex = 1}){
+
+    return Expanded(
+        flex: flex,
+        child: TextView("")
+    );
+
+  }
+
+  static BoxDecoration boxDecorationRadius({
+    Color soild: Colors.transparent,
+    Color stroke:Colors.transparent,
+    int strokeWidth:1,
+    double topRightRadius = 0.0,
+    double bottomRightRadius = 0.0,
+    double topLeftRadius = 0.0,
+    double bottomLeftRadius = 0.0,
+  }){
+    return BoxDecoration(
+        color: soild,
+        border: Border.all(
+            color: stroke,
+            width: Adapt.setWidth(strokeWidth)
+        ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Adapt.setWidth(topLeftRadius)),
+          topRight: Radius.circular(Adapt.setWidth(topRightRadius)),
+          bottomLeft: Radius.circular(Adapt.setWidth(bottomLeftRadius)),
+          bottomRight: Radius.circular(Adapt.setWidth(bottomRightRadius)),
+        )
+    );
+  }
+  static BoxDecoration boxDecorationAllRadius({
+    Color soild: Colors.transparent,
+    Color stroke:Colors.transparent,
+    int strokeWidth:1,
+    double radius = 0.0,
+  }){
+    return BoxDecoration(
+        color: soild,
+        border: Border.all(
+            color: stroke,
+            width: Adapt.setWidth(strokeWidth)
+        ),
+        borderRadius: BorderRadius.circular(radius)
     );
   }
 
@@ -72,9 +121,9 @@ class UIHelper{
 
   static EdgeInsets only({Object left: 0,Object right: 0,Object top: 0,Object bottom: 0}){
     return EdgeInsets.only(top:  Adapt.setWidth(top),
-        right: Adapt.setWidth(right),
-        bottom: Adapt.setWidth(bottom),
-        left: Adapt.setWidth(left),
+      right: Adapt.setWidth(right),
+      bottom: Adapt.setWidth(bottom),
+      left: Adapt.setWidth(left),
     );
   }
 

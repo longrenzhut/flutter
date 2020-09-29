@@ -2,16 +2,15 @@
 import 'package:demo/base/utils/Adapt.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SpaceWidget extends StatelessWidget {
 
-  double space = 0;
-  Color color = Colors.transparent;
+  final double space;
+  final Color color;
 
   bool isVerSpace = true;
 
-  SpaceWidget(double space,{this.color,this.isVerSpace = true}){
-    this.space = space;
-  }
+  SpaceWidget(this.space,{this.color = Colors.transparent,this.isVerSpace = true});
 
   @override
   Widget build(BuildContext context) {

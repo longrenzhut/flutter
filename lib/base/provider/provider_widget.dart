@@ -11,6 +11,7 @@ class ProviderWidget<T extends ViewStateModel> extends StatefulWidget {
   final Function(T model) onModelReady;
   final bool autoDispose;
   final bool wantKeepAlive;
+  final bool isInit;
 
   ProviderWidget({
     Key key,
@@ -20,6 +21,7 @@ class ProviderWidget<T extends ViewStateModel> extends StatefulWidget {
     this.onModelReady,
     this.autoDispose: true,
     this.wantKeepAlive: false,
+    this.isInit: false,
   }) : super(key: key);
 
   _ProviderWidgetState<T> createState() => _ProviderWidgetState<T>();
@@ -44,7 +46,7 @@ class _ProviderWidgetState<T extends ViewStateModel>
 
   @override
   Widget build(BuildContext context) {
-
+    model.isInit = widget.isInit;
     return ChangeNotifierProvider<T>.value(
       value: model,
       child: Consumer<T>(

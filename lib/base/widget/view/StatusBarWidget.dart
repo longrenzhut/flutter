@@ -15,7 +15,7 @@ class StatusBarWidget extends StatelessWidget {
 
     return Container(
       color: color,
-      height: Adapt.statusBarH,
+      height: Adapt.getStaBarH(),
     );
   }
 }

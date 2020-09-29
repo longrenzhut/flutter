@@ -72,12 +72,12 @@ class ViewStateModel with ChangeNotifier {
   }
 
 
-  void postP(String url,Params params,ReqCallBack reqCallBack){
-    HttpProvider.getInstance().postP(url, params, reqCallBack);
+  Future postP(String url,Params params,ReqCallBack reqCallBack){
+    return HttpProvider.getInstance().postP(url, params, reqCallBack);
   }
 
-  void postJ(String url,Params params,ReqCallBack reqCallBack){
-    HttpProvider.getInstance().postJ(url, params,reqCallBack);
+  Future postJ(String url,Params params,ReqCallBack reqCallBack){
+    return HttpProvider.getInstance().postJ(url, params,reqCallBack);
   }
 
 
@@ -112,8 +112,10 @@ class ViewStateModel with ChangeNotifier {
   bool _isInit = true;
 
 
+  // ignore: unnecessary_getters_setters
   bool get isInit => _isInit;
 
+  // ignore: unnecessary_getters_setters
   set isInit(bool value) {
     _isInit = value;
   }
@@ -122,7 +124,7 @@ class ViewStateModel with ChangeNotifier {
 
   }
 
-  Widget builder({Widget child}){
+  Widget loadAnim({Widget child}){
     debugPrint("刷新界面--->" + viewState?.toString());
     if(!isInit){
       return child;
