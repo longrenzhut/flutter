@@ -22,8 +22,8 @@ class CustomTextView extends StatelessWidget {
 
   CustomTextView(this.title,{this.margin, this.size, this.color,
     this.soild = MyColors.cl_FEEA05, this.radius = 0.0,this.onTap,
-    this.width,
-    this.height,
+    this.width = double.infinity,
+    this.height = double.infinity,
     this.padding,
   });
 

@@ -8,20 +8,17 @@ import 'package:demo/base/utils/LoginHelper.dart';
 
 class MyVM extends ViewStateModel{
 
-
+  UserModel mUserModel;
   @override
-  void initData() {
+  Future initData() {
     setBusy();
-    getUserInfo();
-  }
 
-  Future getUserInfo() {
     var params = Params(type: 1);
-    return postP("admin/my/index", params, ReqCallBack(
+    return  postP("admin/my/index", params, ReqCallBack(
         onSuccess:(map){
           var userModel = UserModel.fromJson(map);
           LoginHelper.instance().intoLogin(userModel);
-
+          this.mUserModel = userModel;
 
         }
     ));

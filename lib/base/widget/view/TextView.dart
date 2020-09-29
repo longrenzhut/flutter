@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class TextView extends Text{
 
 
-  String data;
+  final String data;
 
 
   TextView(this.data,{int size = 10,Color color = Colors.transparent,FontWeight weight}) : super(data,

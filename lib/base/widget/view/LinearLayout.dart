@@ -40,7 +40,7 @@ class LinearLayout extends StatelessWidget {
       child: Flex(
           direction: direction,
           children: children,
-        mainAxisSize: mainAxisSize,
+          mainAxisSize: mainAxisSize,
           mainAxisAlignment: horAxisAlignment,
           crossAxisAlignment: verAxisAlignment,
       ),

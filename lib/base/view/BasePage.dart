@@ -23,15 +23,18 @@ abstract class BasePage extends StatelessWidget {
 
 
 
+
   Widget getView(BuildContext context);
 
-  Future show({Future<dynamic> requestCallBack}) {
+
+  Future show({Future<dynamic> requestCallBack,Function(dynamic value) doCallback}) {
     return showDialog(
         context: mContext,
         barrierDismissible: false,
         builder: (_) {
           return  NetLoadingDialog(
             requestCallBack: requestCallBack,
+            doCallback:doCallback,
             outsideDismiss: false,
           );
         });

@@ -110,15 +110,34 @@ class HttpProvider {
       }
 
       if (null != callBack)
-        _json(response, callBack, true);
-      else
-        return response;
+        return _json(response, callBack, true);
+      return response.data;
     }
     catch(e,s){
       if(null != callBack)
         callBack.onReqError(e,s);
+      return false;
     }
   }
+
+//  Future request(String url, String method,
+//      Params param, ReqCallBack callBack) async {
+//    // 配置dio请求信息
+//      Response response;
+//      if(!BaseUtils.isEmpty(Config.token)) {
+//        _dio.options.headers.addAll({"access-token": Config.token});
+//      }
+//      if (method == 'get') {
+//        response = await _dio.get(url, queryParameters: param.map);
+//      }
+//      else if (method == "post") {
+//        response = await _dio.post(url, data: param.map);
+//      }
+//
+////      if (null != callBack)
+////        _json(response, callBack, true);
+//      return response.data;
+//  }
 
 
   ///回调的方式
@@ -155,8 +174,9 @@ class HttpProvider {
   }
 
 
-  _json(Response response, ReqCallBack callBack, bool isUse) {
+  bool _json(Response response, ReqCallBack callBack, bool isUse) {
 //    try{
+    var isSuc = false;
     if (response.statusCode != 200) {
 //        _msg = response.statusCode.toString();
       //服务器错误提示
@@ -171,6 +191,8 @@ class HttpProvider {
       var resCallbackMap = json.decode(result);
       int _code = resCallbackMap['code'];
       if (_code == 1) {
+
+        isSuc = true;
         Map<String, dynamic> result = resCallbackMap["data"];
         if (null != callBack)
           callBack.onReqSuccess(result);
@@ -186,5 +208,7 @@ class HttpProvider {
     }
     if (null != callBack && isUse)
       callBack.onReqCompleted();
+
+    return isSuc;
   }
 }

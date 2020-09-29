@@ -50,7 +50,6 @@ class ReqCallBack {
     if(null != onCompleted)
       onCompleted();
 
-    _viewStateModel?.setIdle();
   }
 
   void onReqFailed(int code) {

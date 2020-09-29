@@ -6,12 +6,14 @@ class NetLoadingDialog extends StatefulWidget {
   String loadingText;
   bool outsideDismiss;
   Function dismissCallback;
+  Function(dynamic value) doCallback;
   Future<dynamic> requestCallBack;
 
   NetLoadingDialog(
       {Key key,
         this.loadingText = "loading...",
         this.outsideDismiss = true,
+        this.doCallback,
         this.dismissCallback,
         this.requestCallBack})
       : super(key: key);
@@ -31,10 +33,18 @@ class _LoadingDialog extends State<NetLoadingDialog> {
   @override
   void initState() {
     super.initState();
+
     if (widget.requestCallBack != null) {
-      widget.requestCallBack.then((_) {
+      widget.requestCallBack.then((value) {
         Navigator.pop(context);
-      });
+        return value;
+      }).then((value) {
+        if(null != value &&  value == true) {
+          if (null != widget.doCallback)
+            widget.doCallback(value);
+        }
+      })
+      ;
     }
   }
 

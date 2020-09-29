@@ -110,9 +110,10 @@ class LoginPage extends BasePage {
               return;
             }
             show(
-                requestCallBack: model.loginByPhone(_accountController.text,_pwdController.text)
-            ).then((value) =>
-                RouterHepler.buildHome(mContext)
+                requestCallBack: model.loginByPhone(_accountController.text,_pwdController.text),
+                doCallback: (value){
+                    RouterHepler.buildHome(mContext);
+                }
             );
 
           },

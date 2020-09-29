@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:demo/base/utils/BaseUtils.dart';
 import 'package:flutter/material.dart';
 
 import 'Adapt.dart';
@@ -38,7 +39,7 @@ class ImageHelper {
   }
 
   static Widget loadWH(String url,{Object width,Object height}){
-    if(url.isEmpty)
+    if(BaseUtils.isEmpty(url))
       return  Container(
         width: Adapt.setWidth(width),
         height: Adapt.setWidth(width),
@@ -57,13 +58,13 @@ class ImageHelper {
   }
 
   static Widget loadCircle(String url,width){
-    if(url.isEmpty)
+    if(BaseUtils.isEmpty(url))
       return  Container(
         width: Adapt.setWidth(width),
         height: Adapt.setWidth(width),
-        decoration: UIHelper.boxDecoration(
-            radius: Adapt.setWidth(width)/2 + 10,
-            soildColor: Colors.grey[500]
+        decoration: UIHelper.boxDecorationAllRadius(
+            radius: Adapt.setWidth(width)/2,
+            soild: Colors.grey[500]
         ),
       );
     return ClipRRect(

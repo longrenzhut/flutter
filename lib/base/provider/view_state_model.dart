@@ -47,6 +47,19 @@ class ViewStateModel with ChangeNotifier {
     viewState = ViewState.idle;
   }
 
+  //是否第一次进入界面
+  bool _isInit = false;
+
+
+  // ignore: unnecessary_getters_setters
+  bool get isInit => _isInit;
+
+  // ignore: unnecessary_getters_setters
+  set isInit(bool value) {
+    _isInit = value;
+  }
+
+
   void setBusy() {
     viewState = ViewState.busy;
   }
@@ -73,11 +86,11 @@ class ViewStateModel with ChangeNotifier {
 
 
   Future postP(String url,Params params,ReqCallBack reqCallBack){
-    return HttpProvider.getInstance().postP(url, params, reqCallBack);
+    return HttpProvider.getInstance().postP(url, params, reqCallBack.setViewModel(this));
   }
 
   Future postJ(String url,Params params,ReqCallBack reqCallBack){
-    return HttpProvider.getInstance().postJ(url, params,reqCallBack);
+    return HttpProvider.getInstance().postJ(url, params,reqCallBack.setViewModel(this));
   }
 
 
@@ -108,17 +121,6 @@ class ViewStateModel with ChangeNotifier {
     super.dispose();
   }
 
-  //是否第一次进入界面
-  bool _isInit = true;
-
-
-  // ignore: unnecessary_getters_setters
-  bool get isInit => _isInit;
-
-  // ignore: unnecessary_getters_setters
-  set isInit(bool value) {
-    _isInit = value;
-  }
 
   void initData(){
 
@@ -126,7 +128,10 @@ class ViewStateModel with ChangeNotifier {
 
   Widget loadAnim({Widget child}){
     debugPrint("刷新界面--->" + viewState?.toString());
-    if(!isInit){
+
+    var isOk = isInit == false;
+
+    if(isOk){
       return child;
     }
 
@@ -145,7 +150,7 @@ class ViewStateModel with ChangeNotifier {
       return ViewStateUnAuthWidget();
     }
     //model.idle
-
+    isInit = false;
     return child;
   }
 
