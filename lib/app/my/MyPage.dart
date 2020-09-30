@@ -44,7 +44,6 @@ class MyPage extends BasePage{
     );
   }
 
-  RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   Widget getRefreshView(UserModel model){
     return SmartRefresher(
@@ -52,11 +51,9 @@ class MyPage extends BasePage{
         enablePullUp: false,
         header: WaterDropHeader(),
         footer: ClassicFooter(),
-        controller: _refreshController,
+        controller: mViewModel.refreshController,
         onRefresh:() {
-          mViewModel.initData().then((value) => {
-            _refreshController.refreshCompleted()
-          });
+          mViewModel.initData();
         },
         child:getContentList(model)
     );

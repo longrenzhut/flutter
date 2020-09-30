@@ -10,11 +10,12 @@ class MyVM extends ViewStateModel{
 
   UserModel mUserModel;
   @override
-  Future initData() {
+  Future initData() async{
+    super.initData();
     setBusy();
 
     var params = Params(type: 1);
-    return  postP("admin/my/index", params, ReqCallBack(
+     postP("admin/my/index", params, ReqCallBack(
         onSuccess:(map){
           var userModel = UserModel.fromJson(map);
           LoginHelper.instance().intoLogin(userModel);
@@ -22,6 +23,8 @@ class MyVM extends ViewStateModel{
 
         }
     ));
+
+    refreshController.refreshCompleted();
   }
 
 

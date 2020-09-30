@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../http/HttpProvider.dart';
 import '../http/Params.dart';
@@ -58,6 +59,7 @@ class ViewStateModel with ChangeNotifier {
   set isInit(bool value) {
     _isInit = value;
   }
+
 
 
   void setBusy() {
@@ -121,9 +123,14 @@ class ViewStateModel with ChangeNotifier {
     super.dispose();
   }
 
+  RefreshController _refreshController;
+
+  RefreshController get refreshController => _refreshController;
+
 
   void initData(){
-
+    if(null == _refreshController)
+      _refreshController = RefreshController(initialRefresh: false);
   }
 
   Widget loadAnim({Widget child}){

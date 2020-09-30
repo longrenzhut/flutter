@@ -9,9 +9,6 @@ abstract class ViewStateListModel<T> extends ViewStateModel{
 
   static const int pageSize = 10;
 
-  RefreshController _refreshController;
-
-  RefreshController get refreshController => _refreshController;
 
   /// 当前页码
   int _currentPageNum = pageNumFirst;
@@ -22,8 +19,7 @@ abstract class ViewStateListModel<T> extends ViewStateModel{
 
   @override
   initData(){
-    if(null == _refreshController)
-      _refreshController = RefreshController(initialRefresh: false);
+    super.initData();
     setBusy();
     refresh();
   }
@@ -97,8 +93,8 @@ abstract class ViewStateListModel<T> extends ViewStateModel{
 
   @override
   void dispose() {
-    if(null != _refreshController)
-      _refreshController.dispose();
+    if(null != refreshController)
+      refreshController.dispose();
     super.dispose();
   }
 }
