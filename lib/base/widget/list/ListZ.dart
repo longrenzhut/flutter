@@ -14,11 +14,6 @@ class ListZ{
   }){
 
 
-    if(null != header)
-      adapter.setHeader(header);
-
-    if(null != headers)
-      adapter.setHeaders(headers);
 
     return ListView.separated(
         padding: padding,

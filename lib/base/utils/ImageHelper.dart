@@ -12,13 +12,19 @@ class ImageHelper {
   }
 
   static Widget asset(String name, {double width, double height, BoxFit boxFit = BoxFit.fitHeight}) {
-    var w = width == double.infinity ? double.infinity: Adapt.setWidth(width);
-    var h = height == double.infinity ? double.infinity: Adapt.setWidth(height);
+    var w = width == null ? null: Adapt.setWidth(width);
+    var h = height == null ? null: Adapt.setWidth(height);
     return Image.asset(
       png(name),
       width: w,
       height: h,
       fit: boxFit,
+    );
+  }
+
+  static AssetImage assetImage(String name, ) {
+    return AssetImage(
+      png(name),
     );
   }
 

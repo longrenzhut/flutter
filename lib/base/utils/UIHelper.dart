@@ -84,8 +84,10 @@ class UIHelper{
     Color stroke:Colors.transparent,
     int strokeWidth:1,
     double radius = 0.0,
+    DecorationImage image
   }){
     return BoxDecoration(
+      image: image,
         color: soild,
         border: Border.all(
             color: stroke,
@@ -113,6 +115,10 @@ class UIHelper{
 
   static EdgeInsets vertical(Object value){
     return EdgeInsets.symmetric(vertical:  Adapt.setWidth(value));
+  }
+
+  static EdgeInsets verHorizontal(Object ver,Object hor){
+    return EdgeInsets.symmetric(vertical:  Adapt.setWidth(ver),horizontal:  Adapt.setWidth(hor));
   }
 
   static EdgeInsets horizontal(Object value){

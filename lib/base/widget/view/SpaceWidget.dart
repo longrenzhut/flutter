@@ -8,14 +8,13 @@ class SpaceWidget extends StatelessWidget {
   final double space;
   final Color color;
 
-  bool isVerSpace = true;
 
-  SpaceWidget(this.space,{this.color = Colors.transparent,this.isVerSpace = true});
+  SpaceWidget(this.space,{this.color = Colors.transparent});
 
   @override
   Widget build(BuildContext context) {
-    double height = isVerSpace? space: 1;
-    double width = isVerSpace? null: space;
+    double height = space;
+    double width = space;
 
 
     return Container(

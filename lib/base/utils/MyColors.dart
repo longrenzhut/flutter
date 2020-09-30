@@ -29,5 +29,11 @@ class MyColors{
   static const Color cl_DDE1E8 = Color(0xFFDDE1E8);
   static const Color cl_252100 = Color(0xFF252100);
   static const Color cl_FEEA05 = Color(0xFFFEEA05);
+  static const Color cl_181400 = Color(0xFF181400);
+  static const Color cl_513D21 = Color(0xFF513D21);
+  static const Color cl_222329 = Color(0xFF222329);
+  static const Color cl_E8A46A = Color(0xFFE8A46A);
+  static const Color cl_F6F1EB = Color(0xFFF6F1EB);
+  static const Color cl_333333 = Color(0xFF333333);
 
 }

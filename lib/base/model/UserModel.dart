@@ -71,15 +71,15 @@ class UserModel {
 }
 
   UserModel.fromJson(dynamic json) {
-    _isAuth = json["isAuth"];
-    _authName = json["authName"];
-    _isOpen = json["isOpen"];
-    _openTitle = json["openTitle"];
-    _openContent = json["openContent"];
+    _isAuth = json["is_auth"];
+    _authName = json["auth_name"];
+    _isOpen = json["is_open"];
+    _openTitle = json["open_title"];
+    _openContent = json["open_content"];
     _nickname = json["nickname"];
     _headimgurl = json["headimgurl"];
-    _isOrderPush = json["isOrderPush"];
-    _isBuyNotice = json["isBuyNotice"];
+    _isOrderPush = json["is_order_push"];
+    _isBuyNotice = json["is_buy_notice"];
     _qq = json["qq"];
     _phone = json["phone"];
     _token = json["token"];

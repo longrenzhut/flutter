@@ -1,33 +1,28 @@
 
 import 'package:flutter/material.dart';
 
-abstract class BaseAdapter<T>{
+
+
+class BaseAdapter<T>{
+
+
 
   List<T> data;
 
-  List<Widget> _headers;
 
   bool isClick = true;
 
   Function(int index,T model) onItemClick;
+  Widget Function(BuildContext context,int index, T model) builder;
 
   BaseAdapter({
     this.data,
     this.isClick = true,
     this.onItemClick,
+    this.builder,
   }) {
   }
 
-  void setHeaders(List<Widget> _headers){
-    this._headers = _headers;
-  }
-
-  void setHeader(Widget _header){
-    if(_headers == null)
-      this._headers = [];
-    this._headers.clear();
-    this._headers.add(_header);
-  }
 
   void setOnItemCallback(Function(int index,T model) onItemClick){
     this.onItemClick = onItemClick;
@@ -42,29 +37,17 @@ abstract class BaseAdapter<T>{
 
   List<T> getDatas()=> data;
 
-  int getHeaderCount(){
-
-    return (null == _headers ? 0 : _headers.length);
-  }
 
   int getItemCount(){
-    int count = (null == data ? 0 : data.length) + getHeaderCount();
+    int count = (null == data ? 0 : data.length);
     return count;
   }
 
-  Widget onBindViewHolderHeader(BuildContext context, int index){
-
-    return _headers[index];
-  }
-
   Widget onCreateViewHolder(BuildContext context, int index) {
-    if(index < getHeaderCount()){
-      return onBindViewHolderHeader(context,index);
-    }
 
-    T model = data[index - getHeaderCount()];
+    T model = data[index];
     return !isClick?
-    onBindViewHolder(context,index,model):
+    builder(context,index,model):
     InkWell(
       onTap: (){
         if(null != onItemClick)
@@ -72,7 +55,7 @@ abstract class BaseAdapter<T>{
         else
           onItemClicked(context,index,model);
       },
-      child: onBindViewHolder(context,index,model),
+      child: builder(context,index,model),
     );
   }
 
@@ -80,8 +63,6 @@ abstract class BaseAdapter<T>{
 
   }
 
-
-  Widget onBindViewHolder(BuildContext context, int index,T model);
 
   double getDividerHeight(){
     return 0;

@@ -20,10 +20,10 @@ class CustomTextView extends StatelessWidget {
   final num width;
   final EdgeInsetsGeometry padding;
 
-  CustomTextView(this.title,{this.margin, this.size, this.color,
+  CustomTextView(this.title,{this.margin, this.size = 10, this.color= MyColors.black,
     this.soild = MyColors.cl_FEEA05, this.radius = 0.0,this.onTap,
-    this.width = double.infinity,
-    this.height = double.infinity,
+    this.width,
+    this.height ,
     this.padding,
   });
 
