@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class MyColors{
 
+  static const Color bgColor = Color(0xFFF6F8FB);
   static const Color cl_111928 = Color(0xFF111928);
   static const Color cl_067C5F = Color(0xFF067C5F);
   static const Color cl_aa067C5F = Color(0xaa067C5F);

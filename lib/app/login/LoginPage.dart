@@ -42,7 +42,7 @@ class LoginPage extends BasePage {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        getStatusBar(),
+        statusBarView(),
         Padding(
           padding: UIHelper.only(top: 45,left: 20),
           child: Row(

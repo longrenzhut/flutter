@@ -22,7 +22,7 @@ class LinearLayout extends StatelessWidget {
     Key key,
     this.margin,
     this.padding,
-    this.direction : Axis.horizontal,
+    this.direction : Axis.vertical,
     this.children,
     this.verAxisAlignment: CrossAxisAlignment.start,
     this.horAxisAlignment: MainAxisAlignment.start,

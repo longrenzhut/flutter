@@ -14,7 +14,7 @@ class RecyclerView extends ListView{
 }){
 
 
-    if(adapter.getDividerHeight() == 0){
+    if(adapter.divider == 0){
       return ListView.builder(
           padding: padding,
           controller: controller,
@@ -36,8 +36,9 @@ class RecyclerView extends ListView{
         },
         separatorBuilder: (BuildContext context, int index) {
           return  Divider(
-              height:  Adapt.setWidth(adapter.getDividerHeight()),
-              color: adapter.getDividerColor());
+              height:  Adapt.setWidth(adapter.divider),
+              color: adapter.dividerColor
+          );
         }
     );
 

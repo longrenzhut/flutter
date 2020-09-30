@@ -1,6 +1,6 @@
 
 import 'package:demo/base/utils/MyColors.dart';
-import 'package:demo/base/widget/view/StatusBarWidget.dart';
+import 'package:demo/base/widget/view/StatusBarView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ abstract class BasePage extends StatelessWidget {
   Widget build(BuildContext context) {
     this.mContext = context;
     return Scaffold(
-      backgroundColor: MyColors.cl_F6F8FB,
+      backgroundColor: MyColors.bgColor,
       body: getView(context),
     );
   }
@@ -47,8 +47,8 @@ abstract class BasePage extends StatelessWidget {
   }
 
 
-  Widget getStatusBar(){
-    return StatusBarWidget(getBarColor());
+  Widget statusBarView(){
+    return StatusBarView(getBarColor());
   }
 
 

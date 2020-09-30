@@ -58,7 +58,7 @@ class MyPage extends BasePage{
             _refreshController.refreshCompleted()
           });
         },
-        child:getContentList()
+        child:getContentList(model)
     );
 
   }
@@ -67,11 +67,12 @@ class MyPage extends BasePage{
   Widget getTop(UserModel model){
 
     return LinearLayout(
+      bgColor: MyColors.white,
       direction: Axis.vertical,
       children: [
-        getStatusBar(),
+        statusBarView(),
         LinearLayout(
-          bgColor: MyColors.white,
+          direction: Axis.horizontal,
           padding: UIHelper.only(top: 30,left: 20,bottom: 24),
           children: [
             ImageHelper.loadCircle(model?.headimgurl,60),
@@ -91,6 +92,7 @@ class MyPage extends BasePage{
           ],
         ),
         LinearLayout(
+          direction: Axis.horizontal,
           verAxisAlignment: CrossAxisAlignment.center,
           margin: UIHelper.horizontal(12),
           decoration: BoxDecoration(
@@ -115,19 +117,11 @@ class MyPage extends BasePage{
               radius: 14.0,
               padding: UIHelper.verHorizontal(4,12),
               margin: UIHelper.right(10),
-
             ),
-            SpaceWidget(14),
-            Expanded(
-              flex: 1,
-              child: Container(
-                height: 700,
-                child: getContentList(),
-              ),
-            )
           ],
         ),
-
+        SpaceWidget(14),
+        SpaceWidget(14,color: MyColors.bgColor,),
       ],
     );
   }
@@ -144,7 +138,7 @@ class MyPage extends BasePage{
     "ic_my_contact.png","ic_my_setting.png"
   ];
 
-  Widget getContentList() {
+  Widget getContentList(UserModel model) {
     list.clear();
     for (int i = 0; i < title.length; i ++) {
       var item = ItemModel();
@@ -153,38 +147,19 @@ class MyPage extends BasePage{
       list.add(item);
     }
 
-//    return ListView.builder(
-//        itemCount: list.length,
-//        itemBuilder: (BuildContext context, int index) {
-//          var model = list[index];
-//          return LinearLayout(
-//            verAxisAlignment: CrossAxisAlignment.center,
-//            height: 70,
-//            padding: UIHelper.horizontal(12),
-//            children: [
-//              ImageHelper.asset(model.url, width: 20, height: 20),
-//              SpaceWidget(12),
-//              TextView(model.title, size: 14, color: MyColors.cl_333333,),
-//              Spacer(flex: 1,),
-//              ImageHelper.asset("ic_enter.png")
-//
-//            ],
-//
-//          );
-//        });
-//  }
-
     return RecyclerView.builder(
       adapter: BaseAdapter<ItemModel>(
+        header: getTop(model),
         data: list,
           builder: (context,index,model){
             return LinearLayout(
+              direction: Axis.horizontal,
               verAxisAlignment: CrossAxisAlignment.center,
               height: 70,
               padding: UIHelper.horizontal(12),
               children: [
                 ImageHelper.asset(model.url,width: 20,height: 20),
-                SpaceWidget(12),
+                SpaceWidget(12,vertical: false,),
                 TextView(model.title,size: 14,color: MyColors.cl_333333,),
                 Spacer(flex: 1,),
                 ImageHelper.asset("ic_enter.png",width: 16,height: 16)
