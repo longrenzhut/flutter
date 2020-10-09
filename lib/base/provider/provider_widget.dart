@@ -11,7 +11,6 @@ class ProviderWidget<T extends ViewStateModel> extends StatefulWidget {
   final Function(T model) onModelReady;
   final bool autoDispose;
   final bool wantKeepAlive;
-  final bool isInit;
 
   ProviderWidget({
     Key key,
@@ -20,7 +19,6 @@ class ProviderWidget<T extends ViewStateModel> extends StatefulWidget {
     this.child,
     this.onModelReady,
     this.autoDispose: true,
-    this.isInit: false,
     this.wantKeepAlive: false,
   }) : super(key: key);
 
@@ -35,7 +33,6 @@ class _ProviderWidgetState<T extends ViewStateModel>
   void initState() {
     model = widget.model;
     widget.onModelReady?.call(model);
-    model.isInit = widget.isInit;
     super.initState();
   }
 

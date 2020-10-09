@@ -60,5 +60,9 @@ class RouterHepler{
     _navigateTo(context,Routes.home,replace: true);
   }
 
+  static void buildSetting(BuildContext context){
+    _navigateTo(context,Routes.setting);
+  }
+
 
 }

@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
   int divider;
   Color dividerColor = MyColors.cl_A5AAB4;
 
-  Function(int index,T model) onItemClick;
+  Function(BuildContext context,int index,T model) onItemClick;
 
   Widget Function(BuildContext context,int index, T model) builder;
 
@@ -27,7 +27,7 @@ import 'package:flutter/material.dart';
   });
 
 
-  void setOnItemCallback(Function(int index,T model) onItemClick){
+  void setOnItemCallback(Function(BuildContext context,int index,T model) onItemClick){
     this.onItemClick = onItemClick;
   }
 
@@ -74,7 +74,7 @@ import 'package:flutter/material.dart';
 //      ),
               onTap: (){
                 if(null != onItemClick)
-                  onItemClick(index,model);
+                  onItemClick(context,index,model);
                 else
                   onItemClicked(context,index,model);
               },

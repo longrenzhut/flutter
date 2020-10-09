@@ -4,6 +4,7 @@ import 'package:demo/base/adapter/BaseAdapter.dart';
 import 'package:demo/base/model/ItemModel.dart';
 import 'package:demo/base/model/UserModel.dart';
 import 'package:demo/base/provider/provider_widget.dart';
+import 'package:demo/base/router/RouterHepler.dart';
 import 'package:demo/base/utils/Adapt.dart';
 import 'package:demo/base/utils/BaseUtils.dart';
 import 'package:demo/base/utils/ImageHelper.dart';
@@ -31,29 +32,32 @@ class MyPage extends BasePage{
 
     return ProviderWidget<MyVM>(
       model: mViewModel = MyVM(),
-      isInit: true,
       onModelReady: (model){
         model.initData();
       },
       builder: (context,model,child){
-        return model.loadAnim(
-            child: getRefreshView(model?.mUserModel)
-        );
+        var widget = setUiLoad(model);
+        if(null != widget)
+          return widget;
+
+        return getRefreshView(model?.mUserModel);
       },
 
     );
   }
 
+  RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   Widget getRefreshView(UserModel model){
     return SmartRefresher(
         enablePullDown: true,
-        enablePullUp: false,
+        enablePullUp: true,
         header: WaterDropHeader(),
         footer: ClassicFooter(),
-        controller: mViewModel.refreshController,
+        controller: _refreshController,
         onRefresh:() {
-          mViewModel.initData();
+          _refreshController.refreshCompleted();
+          mViewModel.requestInfo();
         },
         child:getContentList(model)
     );
@@ -146,8 +150,13 @@ class MyPage extends BasePage{
 
     return RecyclerView.builder(
       adapter: BaseAdapter<ItemModel>(
-        header: getTop(model),
-        data: list,
+          header: getTop(model),
+          data: list,
+//          onItemClick: (context,index,model){
+//            if(model?.title == "系统设置"){
+//              RouterHepler.buildSetting(context);
+//            }
+//          },
           builder: (context,index,model){
             return LinearLayout(
               direction: Axis.horizontal,

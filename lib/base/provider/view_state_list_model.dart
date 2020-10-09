@@ -17,12 +17,18 @@ abstract class ViewStateListModel<T> extends ViewStateModel{
   List<T> list = [];
 
 
-  @override
   initData(){
-    super.initData();
+    if(null != _refreshController)
+      _refreshController = RefreshController(initialRefresh: false);
     setBusy();
     refresh();
   }
+
+
+  RefreshController _refreshController;
+
+  RefreshController get refreshController => _refreshController;
+
 
 
   void refresh() async{

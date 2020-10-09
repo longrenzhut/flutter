@@ -1,4 +1,6 @@
 
+import 'package:demo/base/provider/view_state_model.dart';
+import 'package:demo/base/provider/view_state_widget.dart';
 import 'package:demo/base/utils/MyColors.dart';
 import 'package:demo/base/widget/view/StatusBarView.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +16,7 @@ abstract class BasePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     this.mContext = context;
+    isInit = true;
     return Scaffold(
       backgroundColor: MyColors.bgColor,
       body: getView(context),
@@ -52,9 +55,38 @@ abstract class BasePage extends StatelessWidget {
   }
 
 
-//  Widget getHeaderView(){
-//    return HeaderLayout(getBarColor());
-//  }
+  bool isInit = true;
+
+  Widget setUiLoad<T extends ViewStateModel>(T model){
+    debugPrint("刷新界面--->" + model.viewState?.toString());
+    if(!isInit) {
+      isInit = false;
+      return null;
+    }
+
+
+    if (model.busy) {
+      return ViewStateBusyWidget();
+    }
+    else if (model.error) {
+      return ViewStateErrorWidget(onPressed: request);
+    }
+    else if (model.empty) {
+      return ViewStateEmptyWidget();
+    }
+    else if (model.unAuthorized) {
+      return ViewStateUnAuthWidget();
+    }
+
+    isInit = false;
+    return null;
+  }
+
+
+  void request(){
+
+  }
+
 
 
 

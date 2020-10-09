@@ -123,43 +123,10 @@ class ViewStateModel with ChangeNotifier {
     super.dispose();
   }
 
-  RefreshController _refreshController;
-
-  RefreshController get refreshController => _refreshController;
 
 
-  void initData(){
-    if(null == _refreshController)
-      _refreshController = RefreshController(initialRefresh: false);
-  }
 
-  Widget loadAnim({Widget child}){
-    debugPrint("刷新界面--->" + viewState?.toString());
 
-    var isOk = isInit == false;
-
-    if(isOk){
-      return child;
-    }
-
-    if (busy) {
-      return ViewStateBusyWidget();
-    }
-    else if (error) {
-      return ViewStateErrorWidget(onPressed: (){
-        initData();
-      },);
-    }
-    else if (empty) {
-      return ViewStateEmptyWidget();
-    }
-    else if (unAuthorized) {
-      return ViewStateUnAuthWidget();
-    }
-    //model.idle
-    isInit = false;
-    return child;
-  }
 
 }
 

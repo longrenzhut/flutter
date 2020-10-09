@@ -1,5 +1,6 @@
 import 'file:///F:/flutterbase/flutterbase/lib/app/splash_page.dart';
 import 'package:demo/app/main_page.dart';
+import 'package:demo/app/my/page/SettingPage.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,9 @@ import '../utils/JsonUtils.dart';
 class Routes {
   static String home = "/home";
   static String login = "/login";
+  static String setting = "/home/setting";
 
-  static void configureRoutes(Router router) {
+  static Future<void> configureRoutes(router) async {
     router.notFoundHandler = new Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
           print("ROUTE WAS NOT FOUND !!!");
@@ -21,6 +23,12 @@ class Routes {
     router.define(home, handler: MyHandler(
         func: (_,map){
           return MainPage();
+        }
+    ));
+
+    router.define(setting, handler: MyHandler(
+        func: (_,map){
+          return SettingPage();
         }
     ));
 
