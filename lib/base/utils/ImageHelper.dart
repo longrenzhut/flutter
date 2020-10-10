@@ -11,7 +11,7 @@ class ImageHelper {
     return "images/$name";
   }
 
-  static Widget asset(String name, {double width, double height, BoxFit boxFit = BoxFit.fitHeight}) {
+  static Widget asset(String name, {double width, double height, BoxFit boxFit = BoxFit.fitWidth}) {
     var w = width == null ? null: Adapt.setWidth(width);
     var h = height == null ? null: Adapt.setWidth(height);
     return Image.asset(
@@ -22,7 +22,7 @@ class ImageHelper {
     );
   }
 
-  static Widget click(String name, {double width, double height, BoxFit boxFit = BoxFit.fitHeight,GestureTapCallback onClick}) {
+  static Widget click(String name, {double width, double height, BoxFit boxFit = BoxFit.fitWidth,GestureTapCallback onClick}) {
     var w = width == null ? null: Adapt.setWidth(width);
     var h = height == null ? null: Adapt.setWidth(height);
     var child = InkWell(

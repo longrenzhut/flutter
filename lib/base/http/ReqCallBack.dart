@@ -1,4 +1,5 @@
 
+import 'package:demo/base/utils/BaseUtils.dart';
 import 'package:flutter/material.dart';
 
 import '../Config.dart';
@@ -7,6 +8,7 @@ import '../provider/view_state_model.dart';
 class ReqCallBack {
 
   Function(Map<String,dynamic> map) onSuccess;
+  Function(dynamic list) onSuccessList;
   Function onError;
   Function(int code) onFailed;
   VoidCallback onCompleted;
@@ -22,16 +24,20 @@ class ReqCallBack {
 
   bool isToast = true;
 
-  String key = "records";
+  final String key;
+
+  final bool isList;
 
 
   ReqCallBack({
     this.onSuccess,
     this.onError,
     this.onFailed,
+    this.onSuccessList,
     this.onCompleted,
     this.isToast: true,
-    this.key: "records",
+    this.isList: false,
+    this.key: "",
   });
 
 
@@ -58,15 +64,20 @@ class ReqCallBack {
     _viewStateModel?.setIdle();
   }
 
-  void onReqSuccess(Map<String, dynamic> result) {
+  void onReqSuccess(result) {
+    if(isList && null != onSuccessList){
+      if(BaseUtils.isEmpty(key)){
+        onSuccessList(result);
+      }
+      else{
+        onSuccessList(result[key]);
+      }
+    }
+    else{
+      if(null != onSuccess)
+        onSuccess(result);
+    }
 
-//    String str;
-//    if(Config.DEVELOP || Config.PRE || Config.TEST){
-//      str = result.toString();
-//    }
-
-    if(null != onSuccess)
-      onSuccess(result);
     _viewStateModel?.setIdle();
   }
 

@@ -91,6 +91,10 @@ class ViewStateModel with ChangeNotifier {
     return HttpProvider.getInstance().postP(url, params, reqCallBack.setViewModel(this));
   }
 
+  Future getP(String url,Params params,ReqCallBack reqCallBack){
+    return HttpProvider.getInstance().getP(url, params, reqCallBack.setViewModel(this));
+  }
+
   Future postJ(String url,Params params,ReqCallBack reqCallBack){
     return HttpProvider.getInstance().postJ(url, params,reqCallBack.setViewModel(this));
   }
@@ -103,7 +107,7 @@ class ViewStateModel with ChangeNotifier {
 
   Widget setUILoad(Widget child,bool isInit){
     debugPrint("刷新界面--->" + viewState?.toString());
-    if(!isInit) {
+    if(isInit == false) {
       isInit = false;
       return child;
     }

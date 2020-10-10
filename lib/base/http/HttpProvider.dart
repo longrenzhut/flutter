@@ -149,6 +149,12 @@ class HttpProvider {
     return request(url, 'post', param, callback);
   }
 
+  Future getP(String url, Params param, ReqCallBack callback) async {
+    createPService();
+
+    return request(url, 'get', param, callback);
+  }
+
   Future postJ(String url, Params param, ReqCallBack callback) async {
     createJService();
 
@@ -191,9 +197,8 @@ class HttpProvider {
       var resCallbackMap = json.decode(result);
       int _code = resCallbackMap['code'];
       if (_code == 1) {
-
         isSuc = true;
-        Map<String, dynamic> result = resCallbackMap["data"];
+        var result = resCallbackMap["data"];
         if (null != callBack)
           callBack.onReqSuccess(result);
       }

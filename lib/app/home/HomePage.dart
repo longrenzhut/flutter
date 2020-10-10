@@ -9,7 +9,7 @@ class HomePage extends BasePage{
   Widget getView(BuildContext context) {
 
     return Container(
-      color: MyColors.cl_111928,
+      color: MyColors.black,
     );
 
   }

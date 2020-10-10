@@ -15,8 +15,9 @@ class HeaderLayout extends StatelessWidget {
   final String title;
   final Widget child;
   final bool isIvLeft;
+  final Color bgColor;
 
-  HeaderLayout({Key key,this.title: "",this.isIvLeft: false,
+  HeaderLayout({Key key,this.title: "",this.isIvLeft: false,this.bgColor: Colors.white,
     this.child: const SizedBox.shrink()
   }): super(key: key);
 
@@ -25,7 +26,7 @@ class HeaderLayout extends StatelessWidget {
     return StackLayout(
       height: 46,
       padding: UIHelper.horizontal(16),
-      bgColor: Colors.white,
+      bgColor: bgColor,
       alignment: AlignmentDirectional.center,
       children: [
         Align(

@@ -45,13 +45,10 @@ abstract class BasePage extends StatelessWidget {
 
 
 
-  Color getBarColor(){
-    return MyColors.white;
-  }
 
 
-  Widget statusBarView(){
-    return StatusBarView(getBarColor());
+  Widget statusBarView({Color color: MyColors.white}){
+    return StatusBarView(color);
   }
 
 
