@@ -8,7 +8,7 @@ class Adapt {
   static Adapt instance;
 
   static Adapt _instance;
-  static const Size defaultSize = Size(420,854);
+  static const Size defaultSize = Size(375,667);//Size(420,854);
 
   /// UI设计中手机尺寸 , px
   /// Size of the phone in UI Design , px

@@ -1,5 +1,6 @@
 
 
+import 'package:demo/base/utils/Adapt.dart';
 import 'package:demo/base/utils/MyColors.dart';
 import 'package:demo/base/utils/UIHelper.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,9 +33,9 @@ class CustomTextView extends StatelessWidget {
 
     return Container(
       alignment: Alignment.center,
-      height: height,
+      height: height == null ? height : Adapt.setHeight(height),
       padding: padding,
-      width: width,
+      width: width == null ? width : Adapt.setWidth(width),
       margin: margin,
       decoration: UIHelper.boxDecorationAllRadius(soild: soild,
           radius: radius
@@ -49,7 +50,6 @@ class CustomTextView extends StatelessWidget {
 
     return InkWell(
       child: Container(
-        width: double.maxFinite,
         alignment: Alignment.center,
         child: TextView(title,size: size,color: color),
       ),

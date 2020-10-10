@@ -33,31 +33,26 @@ class MyPage extends BasePage{
     return ProviderWidget<MyVM>(
       model: mViewModel = MyVM(),
       onModelReady: (model){
-        model.initData();
+        model.request();
       },
       builder: (context,model,child){
-        var widget = setUiLoad(model);
-        if(null != widget)
-          return widget;
 
-        return getRefreshView(model?.mUserModel);
+        var widget = getRefreshView(model?.mUserModel);
+
+        return model.setUILoad(widget, isInit);
       },
 
     );
   }
 
-  RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   Widget getRefreshView(UserModel model){
     return SmartRefresher(
         enablePullDown: true,
-        enablePullUp: true,
-        header: WaterDropHeader(),
         footer: ClassicFooter(),
-        controller: _refreshController,
+        controller: mViewModel.refreshController,
         onRefresh:() {
-          _refreshController.refreshCompleted();
-          mViewModel.requestInfo();
+          mViewModel.getUserInfo();
         },
         child:getContentList(model)
     );
@@ -94,7 +89,7 @@ class MyPage extends BasePage{
         ),
         LinearLayout(
           direction: Axis.horizontal,
-          verAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           margin: UIHelper.horizontal(12),
           decoration: BoxDecoration(
               image: DecorationImage(
@@ -104,6 +99,7 @@ class MyPage extends BasePage{
           ) ,
           children: [
             LinearLayout(
+              crossAxisAlignment: CrossAxisAlignment.start,
               direction: Axis.vertical,
               margin: UIHelper.only(top:10,bottom: 10,left: 24),
               children: [
@@ -121,8 +117,8 @@ class MyPage extends BasePage{
             ),
           ],
         ),
-        SpaceWidget(14),
-        SpaceWidget(14,color: MyColors.bgColor,),
+        SpaceWidget(12),
+        SpaceWidget(12,color: MyColors.bgColor,),
       ],
     );
   }
@@ -149,18 +145,19 @@ class MyPage extends BasePage{
     }
 
     return RecyclerView.builder(
+      controller: ScrollController(),
       adapter: BaseAdapter<ItemModel>(
           header: getTop(model),
           data: list,
-//          onItemClick: (context,index,model){
-//            if(model?.title == "系统设置"){
-//              RouterHepler.buildSetting(context);
-//            }
-//          },
+          onItemClick: (context,index,model){
+            if(model?.title == "系统设置"){
+              RouterHepler.buildSetting(context);
+            }
+          },
           builder: (context,index,model){
             return LinearLayout(
               direction: Axis.horizontal,
-              verAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               height: 70,
               padding: UIHelper.horizontal(12),
               children: [

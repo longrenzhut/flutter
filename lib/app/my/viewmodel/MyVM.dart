@@ -5,30 +5,25 @@ import 'package:demo/base/http/ReqCallBack.dart';
 import 'package:demo/base/model/UserModel.dart';
 import 'package:demo/base/provider/view_state_model.dart';
 import 'package:demo/base/utils/LoginHelper.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MyVM extends ViewStateModel{
 
   UserModel mUserModel;
 
+  var refreshController = RefreshController(initialRefresh: false);
 
-  Future initData() async{
+
+  @override
+  Future request() {
     setBusy();
-
-    var params = Params(type: 1);
-    return postP("admin/my/index", params, ReqCallBack(
-        onSuccess:(map){
-          var userModel = UserModel.fromJson(map);
-          LoginHelper.instance().intoLogin(userModel);
-          this.mUserModel = userModel;
-
-        }
-    ));
-
-//    refreshController.refreshCompleted();
+    var request = getUserInfo();
+    return request;
   }
 
-  Future requestInfo() async{
 
+
+  Future getUserInfo(){
     var params = Params(type: 1);
     return postP("admin/my/index", params, ReqCallBack(
         onSuccess:(map){
@@ -37,9 +32,9 @@ class MyVM extends ViewStateModel{
           this.mUserModel = userModel;
 
         }
-    ));
-
-//    refreshController.refreshCompleted();
+    )).then((value) =>
+        refreshController.refreshCompleted()
+    );
   }
 
 

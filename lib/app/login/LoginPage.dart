@@ -14,6 +14,7 @@ import 'package:demo/base/utils/ToastUtil.dart';
 import 'package:demo/base/utils/UIHelper.dart';
 import 'package:demo/base/view/BasePage.dart';
 import 'package:demo/base/widget/view/CustomTextView.dart';
+import 'package:demo/base/widget/view/LinearLayout.dart';
 import 'package:demo/base/widget/view/SpaceWidget.dart';
 import 'package:demo/base/widget/view/TextView.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,14 +33,21 @@ class LoginPage extends BasePage {
     return ProviderWidget<LoginVM>(
       model: LoginVM(),
       builder: (context,model,child){
-        return getContentView(_accountController,_pwdController,model);
+
+        var widget = SingleChildScrollView(
+          child: getContentView(_accountController,_pwdController,model),
+
+        );
+
+        return widget;
       },
     );
   }
 
 
   Widget getContentView(TextEditingController _accountController,TextEditingController _pwdController,LoginVM model){
-    return Column(
+    return LinearLayout(
+      bgColor: Colors.white,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         statusBarView(),
@@ -95,7 +103,7 @@ class LoginPage extends BasePage {
         ),
         SpaceWidget(20),
         CustomTextView("登陆",
-          height: Adapt.setHeight(47),
+          height: 47,
           margin: UIHelper.horizontal(20),
           size: 18,
           radius: 8.0,

@@ -1,4 +1,5 @@
 import 'file:///F:/flutterbase/flutterbase/lib/app/splash_page.dart';
+import 'package:demo/app/login/LoginPage.dart';
 import 'package:demo/app/main_page.dart';
 import 'package:demo/app/my/page/SettingPage.dart';
 import 'package:fluro/fluro.dart';
@@ -19,6 +20,12 @@ class Routes {
           return null;//LoginPage();
         });
 
+
+    router.define(login, handler: MyHandler(
+        func: (_,map){
+          return LoginPage();
+        }
+    ));
 
     router.define(home, handler: MyHandler(
         func: (_,map){

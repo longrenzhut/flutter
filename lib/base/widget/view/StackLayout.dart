@@ -1,36 +1,33 @@
 
 
-
 import 'package:demo/base/utils/Adapt.dart';
 import 'package:flutter/material.dart';
 
-class LinearLayout extends StatelessWidget {
+class StackLayout extends StatelessWidget {
 
   final EdgeInsetsGeometry margin;
   final EdgeInsetsGeometry padding;
-  final Axis direction;
   final List<Widget> children;
-  final MainAxisAlignment mainAxisAlignment;
-  final CrossAxisAlignment crossAxisAlignment;
   final Decoration decoration;
   final Color bgColor;
   final MainAxisSize mainAxisSize;
   final double height;
   final double width;
+  final AlignmentGeometry alignment;
+  final TextDirection textDirection;
 
-  LinearLayout({
+  StackLayout({
     Key key,
     this.margin,
     this.padding,
-    this.direction : Axis.vertical,
     this.children,
-    this.crossAxisAlignment: CrossAxisAlignment.start,
-    this.mainAxisAlignment: MainAxisAlignment.start,
     this.decoration,
     this.bgColor,
     this.mainAxisSize:MainAxisSize.max,
+    this.alignment:AlignmentDirectional.topStart,
     this.height,
     this.width,
+    this.textDirection,
 
   }):super(key: key);
 
@@ -43,12 +40,11 @@ class LinearLayout extends StatelessWidget {
       padding: padding,
       decoration:decoration,
       color: bgColor,
-      child: Flex(
-          direction: direction,
-          children: children,
-          mainAxisSize: mainAxisSize,
-          mainAxisAlignment: mainAxisAlignment,
-          crossAxisAlignment: crossAxisAlignment,
+      child: Stack(
+        fit: StackFit.expand,
+        alignment: alignment,
+        children: children,
+        textDirection: textDirection,
       ),
     );
   }

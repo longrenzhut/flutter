@@ -6,11 +6,19 @@ class ItemModel {
   int _icon;
   String _url;
   int _isSelected;
+  int _type;
 
   String get title => _title;
 
   set title(String value) {
     _title = value;
+  }
+
+
+  int get type => _type;
+
+  set type(int value) {
+    _type = value;
   }
 
   String get content => _content;

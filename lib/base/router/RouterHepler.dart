@@ -64,5 +64,9 @@ class RouterHepler{
     _navigateTo(context,Routes.setting);
   }
 
+  static void buildLogin(BuildContext context){
+    _navigateTo(context,Routes.login,clearStack: true);
+  }
+
 
 }

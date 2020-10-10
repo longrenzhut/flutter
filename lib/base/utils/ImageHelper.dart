@@ -22,6 +22,22 @@ class ImageHelper {
     );
   }
 
+  static Widget click(String name, {double width, double height, BoxFit boxFit = BoxFit.fitHeight,GestureTapCallback onClick}) {
+    var w = width == null ? null: Adapt.setWidth(width);
+    var h = height == null ? null: Adapt.setWidth(height);
+    var child = InkWell(
+      child: Image.asset(
+        png(name),
+        width: w,
+        height: h,
+        fit: boxFit,
+      ),
+      onTap: onClick,
+    );
+
+    return child;
+  }
+
   static AssetImage assetImage(String name, ) {
     return AssetImage(
       png(name),

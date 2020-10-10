@@ -100,6 +100,37 @@ class ViewStateModel with ChangeNotifier {
     HttpProvider.getInstance().zipPost(list, callbacks);
   }
 
+
+  Widget setUILoad(Widget child,bool isInit){
+    debugPrint("刷新界面--->" + viewState?.toString());
+    if(!isInit) {
+      isInit = false;
+      return child;
+    }
+
+
+    if (busy) {
+      return ViewStateBusyWidget();
+    }
+    else if (error) {
+      return ViewStateErrorWidget(onPressed: request);
+    }
+    else if (empty) {
+      return ViewStateEmptyWidget();
+    }
+    else if (unAuthorized) {
+      return ViewStateUnAuthWidget();
+    }
+
+    isInit = false;
+
+    return child;
+  }
+
+  void request(){
+
+  }
+
   /// 未授权的回调
   void onUnAuthorizedException() {}
 

@@ -31,6 +31,14 @@ class LoginHelper {
 
   getUser()=> mUserModel;
 
+  void logout(){
+    Caches.getVar().remove(Caches.USER);
+    mUserModel = null;
+    Config.isLogin = false;
+    Config.token = "";
+
+  }
+
   void intoLogin(UserModel model){
     if(null != mUserModel)
       model.token = mUserModel?.token;
