@@ -25,7 +25,6 @@ abstract class BasePageState<T extends StatefulWidget,K extends BaseViewModel> e
   @override
   void initState() {
     viewModel = getViewModel();
-//    print(viewModel.toString());
     super.initState();
   }
 
@@ -49,7 +48,6 @@ abstract class BasePageState<T extends StatefulWidget,K extends BaseViewModel> e
         },
       ),
     ): getView(context);
-
 
 
 
