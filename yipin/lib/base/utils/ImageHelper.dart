@@ -7,16 +7,18 @@ import '../utils/BaseUtils.dart';
 
 class ImageHelper {
 
-  static String png(String name){
-    return "assets/images/$name";
+  static String png(String name,{int type}){
+    if(type == 0)
+      return "assets/images/$name";
+    return "assets/common/$name";
   }
 
-  static Image loadAssert(String name,{double height,double width}){
+  static Image buildImage(String name,{double height,double width,int type:0,BoxFit fit}){
 
-    return Image.asset(png(name),height: height, width: width,);
+    return Image.asset(png(name),height: height, width: width,fit: fit,);
   }
 
-  static AssetImage assetImage(String name,{double height,double width}){
+  static AssetImage buildAssetImage(String name,{double height,double width}){
 
     return AssetImage(png(name));
   }
@@ -27,32 +29,32 @@ class ImageHelper {
       return Container(
         width: width,
         height: height,
-        child: loadAssert(placeholder, width: width, height: height),
+        child: buildImage(placeholder, width: width, height: height),
       );
     }
 
     return Container(
-      width: width,
-      height: height,
-      child: CachedNetworkImage(
-        fit: BoxFit.fitWidth,
-        height: height,
         width: width,
+        height: height,
+        child: CachedNetworkImage(
+          fit: BoxFit.fitWidth,
+          height: height,
+          width: width,
 //      imageBuilder: (context,provider){
 //        var t = provider;
 //        return Image(image: provider, width: width,height: height,
 //            fit:BoxFit.fill);
 //      },
-        imageUrl: url,
-        placeholder: (context, url){
+          imageUrl: url,
+          placeholder: (context, url){
             return  Center(
               child: Container(
                 child: CircularProgressIndicator(),
               ),
             );
-        },
-        errorWidget: (context, url, error) => Icon(Icons.error),
-      )
+          },
+          errorWidget: (context, url, error) => Icon(Icons.error),
+        )
 
     );
   }
@@ -75,7 +77,7 @@ class ImageHelper {
 //      return  Container(
 //        width: Adapt.setWidth(width),
 //        height: Adapt.setWidth(width),
-//        decoration: UIHelper.boxDecorationAllRadius(
+//        decoration: UIHelper.buildShape(
 //            radius: Adapt.setWidth(width)/2,
 //            solid: Colors.grey[500]
 //        ),

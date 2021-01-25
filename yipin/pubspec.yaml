@@ -37,8 +37,12 @@ dependencies:
   bot_toast: ^3.0.5
   shared_preferences:
   fluro:
+
+#    微信支付以及登录
+  fluwx:
   #UI
   pull_to_refresh:
+  lazy_load_refresh_indicator:
   #轮播
   flutter_swiper:
   #图片缓存
@@ -48,6 +52,8 @@ dependencies:
   #插件
   device_info:
   package_info:
+#  权限
+  permission_handler: 5.0.1+1
 
   #适配
   flutter_screenutil: ^4.0.2+3
@@ -94,6 +100,7 @@ flutter:
   assets:
     - assets/images/
     - assets/files/
+    - assets/common/
 
 
   # To add assets to your application, add an assets section, like this:

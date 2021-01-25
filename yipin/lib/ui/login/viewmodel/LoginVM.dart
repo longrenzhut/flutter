@@ -1,8 +1,13 @@
+import '../../../base/provider/ListViewModel.dart';
 
+class LoginVM extends ListViewModel<String>{
 
-import 'package:yipin/base/provider/BaseViewModel.dart';
-
-class LoginVM extends BaseViewModel{
+  @override
+  Future loadData({int pageNum}) async{
+    await Future.delayed(Duration(milliseconds: 1000));
+    data =  List.generate(list.length > 40 ? 5: 10, (index) => index.toString()).toList();
+    return 1;
+  }
 
 
 }

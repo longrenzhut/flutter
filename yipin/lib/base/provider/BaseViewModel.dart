@@ -9,10 +9,15 @@ import '../http/ReqCallBack.dart';
 class BaseViewModel with ChangeNotifier{
 
 
-  List<CancelToken> cancelTokenList = [];
+  List<CancelToken> cancelTokenList;
 
-  //当前表的总条数
-  int total = 0;
+  CancelToken get cancelToken {
+    var cancelToken = CancelToken();
+    if (null == cancelTokenList)
+      cancelTokenList = [];
+    cancelTokenList.add(cancelToken);
+    return cancelToken;
+  }
 
 
   bool init = false;
@@ -20,26 +25,18 @@ class BaseViewModel with ChangeNotifier{
   bool _disposed = false;
 
   Future<dynamic> postP(String url,Params params,ReqCallBack reqCallBack) {
-    var cancelToken = CancelToken();
-    cancelTokenList.add(cancelToken);
     return  HttpUtils.instance().postP(url, params,cancelToken: cancelToken,callBack: reqCallBack);
   }
 
   Future<dynamic> postJ(String url,Params params,ReqCallBack reqCallBack) {
-    var cancelToken = CancelToken();
-    cancelTokenList.add(cancelToken);
     return  HttpUtils.instance().postJ(url, params,cancelToken: cancelToken,callBack: reqCallBack);
   }
 
   Future<dynamic> getP(String url,Params params,ReqCallBack reqCallBack) {
-    var cancelToken = CancelToken();
-    cancelTokenList.add(cancelToken);
     return   HttpUtils.instance().getP(url, params,cancelToken: cancelToken,callBack: reqCallBack);
   }
 
   Future<dynamic> getJ(String url,Params params,ReqCallBack reqCallBack) {
-    var cancelToken = CancelToken();
-    cancelTokenList.add(cancelToken);
     return  HttpUtils.instance().getJ(url, params,cancelToken: cancelToken,callBack: reqCallBack);
   }
 
@@ -80,7 +77,7 @@ class BaseViewModel with ChangeNotifier{
     cancelTokenList?.forEach((element) {
       element?.cancel();
     });
-    cancelTokenList.clear();
+    cancelTokenList?.clear();
     cancelTokenList = null;
     _disposed = true;
 //    debugPrint('view_state_model dispose -->$runtimeType');

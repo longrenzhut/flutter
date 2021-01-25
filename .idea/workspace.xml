@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e250f044-74dd-4174-959b-806c4656b3b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/flutterapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flutterapp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/android/app/src/main/kotlin/com/zitian/yipin/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/android/app/src/main/kotlin/com/zitian/yipinmerchant/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/controller/BaseController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/controller/BaseController.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/provider/BaseViewModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/provider/BaseViewModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/provider/MyFutureBuilder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/provider/MyFutureBuilder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/provider/provider_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/provider/ProviderWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/widget/DateWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/widget/DateWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/widget/EditLayout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/widget/EditLayout.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/widget/MyIndexStack.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/widget/MyIndexStack.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/base/widget/MyPageView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/base/widget/MyPageView.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/lib/ui/login/viewmodel/LoginVM.dart" beforeDir="false" afterPath="$PROJECT_DIR$/yipin/lib/ui/login/viewmodel/LoginVM.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yipin/test/widget_test.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +26,7 @@
     <property name="android.sdk.path" value="D:/sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/yipin" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -61,9 +43,17 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="409" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611194265192">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="409" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611194265192" />
     <state x="685" y="215" key="FileChooserDialogImpl" timestamp="1610697267129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="215" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1610697267129" />
+    <state x="327" y="77" key="SettingsEditor" timestamp="1611194359091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="327" y="77" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1611194359091" />
   </component>
 </project>
